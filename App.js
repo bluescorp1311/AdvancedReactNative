@@ -79,6 +79,11 @@ const Auth = createStackNavigator(
   {defaultNavigationOptions: {headerShown: false}},
 );
 
+const Settings = createStackNavigator(
+  {settings: SettingsScreen},
+  {defaultNavigationOptions: {headerShown: false}},
+);
+
 const App = createAppContainer(Auth);
 
 export default () => (
