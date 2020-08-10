@@ -12,6 +12,7 @@ import {
   Dimensions,
 } from 'react-native';
 import {CheckBox} from 'react-native-elements';
+import axios from 'axios';
 
 const {height} = Dimensions.get('window');
 
@@ -176,8 +177,9 @@ export class AuthScreen extends Component {
   constructor() {
     super();
     this.state = {
-      dummyData: [...dummyData],
+      dummyData: [],
       position: 0,
+      isLoading: false,
     };
     this.arrDataNeedsToMove = [];
   }
@@ -186,13 +188,28 @@ export class AuthScreen extends Component {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
   }
 
-  // async componentDidMount() {
-  //   let data = await fetch('https://jsonplaceholder.typicode.com/photos');
-  //   data = await data.json();
-  //   this.setState({
-  //     dummyData: data,
-  //   });
-  // }
+  async componentDidMount() {
+    await this.fetchData();
+  }
+
+  fetchData = async (number) => {
+    this.setState({isLoading: true});
+    try {
+      let data = await axios.get(
+        'https://jsonplaceholder.typicode.com/photos?_start=1&_limit=10',
+      );
+      // data = await data.json();
+      console.log('fetchData: ', data.data);
+      const listData = this.state.dummyData;
+      const splitData = listData.concat(data.data);
+      this.setState({
+        isLoading: false,
+        dummyData: splitData,
+      });
+    } catch (error) {
+      console.log('fetchData error: ', error);
+    }
+  };
 
   renderItem = ({item, index}) => {
     return (
@@ -311,7 +328,8 @@ export class AuthScreen extends Component {
         // ItemSeparatorComponent={this.separator}
         onContentSizeChange={(width, height) => {
           // console.log('onContentSizeChange: ', height);
-          const position = (height / dummyData.length) * this.state.index;
+          const position =
+            (height / this.state.dummyData.length) * this.state.index;
           this.setState({
             position,
           });
