@@ -10,6 +10,8 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@dotrongan/react-native-responsive": "^1.0.0",
+    "@magic-sdk/react-native": "^2.6.1",
     "@react-native-community/async-storage": "^1.11.0",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-native-community/netinfo": "^5.9.5",
@@ -25,13 +27,15 @@
     "react-native-safe-area-context": "^3.1.1",
     "react-native-screens": "^2.9.0",
     "react-native-vector-icons": "^7.0.0",
+    "react-native-webview": "^8.2.1",
     "react-navigation": "^4.4.0",
     "react-navigation-stack": "^2.8.2",
     "react-navigation-tabs": "^2.9.0",
     "react-redux": "^7.2.1",
     "recyclerlistview": "^3.0.0",
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "util": "^0.12.3"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",

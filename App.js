@@ -12,6 +12,7 @@ import WelcomeScreen from './src/screens/WelcomeScreen';
 
 import {Provider} from 'react-redux';
 import store from './src/store';
+import MagicScreen from './src/screens/MagicScreen';
 
 const styles = StyleSheet.create({
   focused: {
@@ -74,17 +75,17 @@ const BottomTab = createBottomTabNavigator(
   },
 );
 
-const Auth = createStackNavigator(
-  {auth: AuthScreen},
-  {defaultNavigationOptions: {headerShown: false}},
-);
+// const Magic = createStackNavigator(
+//   {auth: MagicScreen},
+//   {defaultNavigationOptions: {headerShown: false}},
+// );
 
-const Settings = createStackNavigator(
-  {settings: SettingsScreen},
-  {defaultNavigationOptions: {headerShown: false}},
-);
+// const Settings = createStackNavigator(
+//   {settings: SettingsScreen},
+//   {defaultNavigationOptions: {headerShown: false}},
+// );
 
-const App = createAppContainer(Auth);
+const App = createAppContainer(BottomTab);
 
 export default () => (
   <Provider store={store}>
